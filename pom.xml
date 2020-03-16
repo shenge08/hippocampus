@@ -10,6 +10,7 @@
     <modules>
         <module>hippocampus-http</module>
         <module>hippocampus-flowlimit</module>
+        <module>hippocampus-cache</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

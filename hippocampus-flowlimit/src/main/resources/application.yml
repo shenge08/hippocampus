@@ -1,0 +1,15 @@
+logging:
+  level:
+    root: warn
+    org.dreamlife.hippocampus.flowlimit: info
+flowlimit:
+  env:
+    key: value
+  rules:
+  #regex 匹配url的规则
+  - pattern: ".*"
+    key: common
+    tps: 200
+  limitResponse:
+    #自定义实现的响应类
+    policyClass: "org.dreamlife.hippocampus.flowlimit.BusyResponseHandler"

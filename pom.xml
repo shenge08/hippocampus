@@ -11,12 +11,16 @@
         <module>hippocampus-http</module>
         <module>hippocampus-flowlimit</module>
         <module>hippocampus-cache</module>
+        <module>hippocampus-rpc</module>
+        <module>hippocampus-apigateway</module>
+        <module>hippocampus-mybatis</module>
+        <module>hippocampus-registry</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>1.5.22.RELEASE</version>
     </parent>
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
@@ -26,6 +30,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -44,6 +52,11 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>2.10.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

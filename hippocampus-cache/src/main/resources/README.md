@@ -1,0 +1,2 @@
+manager层缓存dao层部分接口
+manager层和dao层提供互补的接口给到service层

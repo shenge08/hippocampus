@@ -15,6 +15,7 @@
         <module>hippocampus-apigateway</module>
         <module>hippocampus-mybatis</module>
         <module>hippocampus-registry</module>
+        <module>hippocampus-springboot</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

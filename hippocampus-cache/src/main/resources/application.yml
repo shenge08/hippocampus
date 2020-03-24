@@ -1,13 +1,14 @@
 spring:
   redis:
+    host: localhost
     database: 0
-    url: localhost
     timeout: 1000
     pool:
       maxWait: 10000
       maxIdle: 8
       minIdle: 3
       maxActive: 8
+
 
 
 

@@ -1,11 +1,14 @@
-package org.dreamlife.hippocampus.cache.spring.config;
+package org.dreamlife.hippocampus.application.config;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Collections;
 
 /**
  * @auther 柳俊阳
@@ -16,6 +19,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @date 2020/3/18
  */
 @Configuration
+@EnableCaching
 public class CacheConfiguration {
     @Bean
     public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
@@ -27,11 +31,12 @@ public class CacheConfiguration {
 
     @Bean("goodsCache")
     public Cache goodsCache(CacheManager cacheManager){
-        return wrapperCache(cacheManager.getCache("goods"));
+        return keyPrefixWrapperCache(cacheManager.getCache("goods"),"cache:goods:");
     }
 
-    private Cache wrapperCache(Cache cache){
-        return new CacheKeyGeneratorWrapper(cache,"cache:goods:");
+    // 添加统一KEY前缀的缓存装饰
+    private Cache keyPrefixWrapperCache(Cache cache,String keyPrefix){
+        return new KeyPrefixCacheWrapper(cache,keyPrefix);
     }
 
 }

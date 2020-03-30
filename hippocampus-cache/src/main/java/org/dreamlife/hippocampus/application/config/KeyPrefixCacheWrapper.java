@@ -1,10 +1,12 @@
-package org.dreamlife.hippocampus.cache.spring.config;
+package org.dreamlife.hippocampus.application.config;
 
 import org.springframework.cache.Cache;
 
 import java.util.concurrent.Callable;
 
 /**
+ * 定义KEY前缀的缓存装饰器
+ *
  * @auther 柳俊阳
  * @github https://github.com/johnliu1122/
  * @csdn https://blog.csdn.net/qq_35695616
@@ -12,11 +14,11 @@ import java.util.concurrent.Callable;
  * @birthday 11-22
  * @date 2020/3/22
  */
-public class CacheKeyGeneratorWrapper implements Cache {
-    private Cache proxy;
-    private String cacheNamePrefix;
+public class KeyPrefixCacheWrapper implements Cache {
+    private final Cache proxy;
+    private final String cacheNamePrefix;
 
-    public CacheKeyGeneratorWrapper(Cache proxy, String cacheNamePrefix){
+    public KeyPrefixCacheWrapper(Cache proxy, String cacheNamePrefix){
         this.proxy=proxy;
         this.cacheNamePrefix = cacheNamePrefix;
     }

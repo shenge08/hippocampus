@@ -1,4 +1,4 @@
-package org.dreamlife.hippocampus.cache.spring.manager;
+package org.dreamlife.hippocampus.application.manager;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
@@ -24,11 +24,6 @@ public class GoodsManager {
 
     private AtomicLong times = new AtomicLong();
 
-    /**
-     * #p0 表示参数列表中偏移量为0的元素
-     * @param id
-     * @return
-     */
     public String load(Long id) {
         String value = goodsCache.get(id, String.class);
         if(value == null){

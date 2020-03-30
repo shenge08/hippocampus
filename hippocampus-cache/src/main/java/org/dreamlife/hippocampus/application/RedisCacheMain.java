@@ -1,8 +1,8 @@
-package org.dreamlife.hippocampus.cache.spring;
+package org.dreamlife.hippocampus.application;
 
 import lombok.extern.slf4j.Slf4j;
-import org.dreamlife.hippocampus.cache.spring.manager.GoodsManager;
-import org.dreamlife.hippocampus.cache.spring.manager.UserManager;
+import org.dreamlife.hippocampus.application.manager.GoodsManager;
+import org.dreamlife.hippocampus.application.manager.UserManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,7 +17,6 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @date 2020/3/18
  */
 @Slf4j
-@EnableCaching
 @SpringBootApplication
 public class RedisCacheMain {
     public static void main(String[] args) {

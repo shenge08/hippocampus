@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 性能统计服务
+ * 接口性能统计服务
  * @auther 柳俊阳
  * @github https://github.com/johnliu1122/
  * @csdn https://blog.csdn.net/qq_35695616
@@ -17,6 +17,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PerformanceAutoConfiguration {
 
+    /**
+     * 接口性能统计的核心服务
+     * @return
+     */
     @Bean
     public PerformanceSummaryService performanceSummaryService(){
         /**
@@ -28,7 +32,7 @@ public class PerformanceAutoConfiguration {
     }
 
     /**
-     * 设置切面来采集RestApi的接口响应时间
+     * 设置切面来采集RestApi的接口响应时间与调用次数
      * @return
      */
     @Bean

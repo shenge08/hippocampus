@@ -109,12 +109,13 @@ public class PerformanceSummaryService {
                                                     // 获取性能值，并执行sink操作
                                                     PerformanceSummary value = performanceSummaries.get(offset).get(uri);
                                                     long totalInvokeCount = value.getTotalInvokeCount();
-                                                    if (totalInvokeCount > 0) {
-                                                        double averageTimeCost = value.getTotalResponseTime() / totalInvokeCount;
-                                                        // 打印出每个被请求接口的平均响应时间
-                                                        log.info("API: {}, averageTimeCost: {} ms, totalInvokeCount: {}, during {}, {}",
-                                                                uri, averageTimeCost, totalInvokeCount, value.getLastSinkTime(),currentTime);
+                                                    if (totalInvokeCount <= 0) {
+                                                        return;
                                                     }
+                                                    double averageTimeCost = value.getTotalResponseTime() / totalInvokeCount;
+                                                    // 打印出每个被请求接口的平均响应时间
+                                                    log.info("API: {}, averageCostTime: {} ms, totalInvokeCount: {}, during {}, {}",
+                                                            uri, averageTimeCost, totalInvokeCount, value.getLastSinkTime(),currentTime);
                                                     // 性能值清空
                                                     performanceSummaries.get(offset).put(uri,
                                                             value.setTotalResponseTime(0)

@@ -25,7 +25,7 @@ public class PerformanceAutoConfiguration {
     public PerformanceSummaryService performanceSummaryService(){
         /**
          * 配置并行度参数
-         * 该参数决定fork的消费者线程数以及容器数
+         * 该参数决定计算节点的个数
          */
         int concurrencyLevel = 2;
         return new PerformanceSummaryService(concurrencyLevel);

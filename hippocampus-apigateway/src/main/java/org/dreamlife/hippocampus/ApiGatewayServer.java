@@ -1,7 +1,10 @@
 package org.dreamlife.hippocampus;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -11,10 +14,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @email johnliu1122@163.com
  * @date 2020/3/30
  */
+@Slf4j
+@EnableDubbo
 @EnableScheduling
 @SpringBootApplication
+@ImportResource("classpath:spring/dubbo-consumer.xml")
 public class ApiGatewayServer {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayServer.class,args);
+        log.info("ApiGatewayServer Started!");
     }
 }

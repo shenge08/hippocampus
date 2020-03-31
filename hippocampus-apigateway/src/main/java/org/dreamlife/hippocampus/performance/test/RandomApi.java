@@ -1,8 +1,12 @@
 package org.dreamlife.hippocampus.performance.test;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.demo.DemoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 
@@ -16,6 +20,8 @@ import java.util.Random;
 @Slf4j
 @RestController
 public class RandomApi {
+    @Reference
+    private DemoService demoService;
 
     @GetMapping("/ping/{randomSuffix}")
     public String ping(@PathVariable("randomSuffix") String randomSuffix){
@@ -28,5 +34,9 @@ public class RandomApi {
         String flag = String.format("invoke %s, cost time: %s ms","/ping/"+randomSuffix,sleep);
         log.info(flag);
         return flag;
+    }
+    @GetMapping("/hello/{randomSuffix}")
+    public String sayHello(@PathVariable("randomSuffix") String randomSuffix){
+        return demoService.sayHello(randomSuffix);
     }
 }

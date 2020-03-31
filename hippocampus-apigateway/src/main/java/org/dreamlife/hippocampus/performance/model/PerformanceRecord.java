@@ -15,6 +15,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class PerformanceRecord {
-    private String uri;
+    private String api;
     private long responseMills;
 }

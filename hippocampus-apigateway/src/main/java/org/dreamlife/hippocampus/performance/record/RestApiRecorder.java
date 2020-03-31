@@ -42,13 +42,13 @@ public class RestApiRecorder {
         long time = System.currentTimeMillis();
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        String url = request.getRequestURL().toString();
+        String api = request.getRequestURL().toString();
         try {
             return pjp.proceed();
         } finally {
             // 通过消息队列异步处理
             long cost = System.currentTimeMillis() - time;
-            performanceSummaryService.submit(new PerformanceRecord().setResponseMills(cost).setUri(url));
+            performanceSummaryService.submit(new PerformanceRecord().setResponseMills(cost).setApi(api));
         }
     }
 

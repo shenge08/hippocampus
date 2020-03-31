@@ -18,7 +18,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableDubbo
 @EnableScheduling
 @SpringBootApplication
-@ImportResource("classpath:spring/dubbo-consumer.xml")
 public class ApiGatewayServer {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayServer.class,args);

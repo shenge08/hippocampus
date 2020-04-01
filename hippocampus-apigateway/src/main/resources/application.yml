@@ -4,4 +4,11 @@ logging:
   level:
     root: warn
     org.dreamlife.hippocampus: info
-
+dubbo:
+  application:
+    name: apiGateway
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20880
